@@ -4,8 +4,35 @@
 		<title><%= title %></title>
 	</head>
 	<body>
-		<img src="img/logo.png" alt="Logo">
-		<h1><%= title %></h1>
+
+		<% if(user) { %>
+			<a href="/signout">Sign out</a>
+		<% } else { %>
+			<a href="signup">Signup</a>
+			<a href="signin">Signin</a>
+		<% } %>
+		
+		<section ng-view></section>
+
+		<script type="text/javascript">
+			window.user = <%- user || 'null' %>;
+		</script>
+
+		<!-- Scripts -->
+		<script type="text/javascript" src="/lib/angular/angular.js"></script>
+		<script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
+
+		<!-- example module -->
+		<script type="text/javascript" src="/example/example.client.module.js"></script>
+		<script type="text/javascript" src="/example/controllers/example.client.controller.js"></script>
+		<script type="text/javascript" src="/example/config/example.client.routes.js"></script>
+
+		<!-- user module -->
+		<script type="text/javascript" src="/users/users.client.module.js"></script>
+		<script type="text/javascript" src="/users/services/authentication.client.service.js"></script>
+
+		<!-- main module -->
+		<script type="text/javascript" src="/application.js"></script>
+
 	</body>
-	<script type="text/javascript" src="/lib/angular/angular.js"></script>
 </html>
